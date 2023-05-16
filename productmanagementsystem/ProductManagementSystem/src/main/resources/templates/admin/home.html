@@ -122,14 +122,15 @@
 <div class="a">
     <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/add|}" th:text="'Add Products'"></a></p>
     <!--<a th:href="@{/add}">Add Products</a>-->
-    <br>
+
     <!--<a th:href="@{/listing}">List Products</a>-->
     <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/listing|}" th:text="'List Products'"></a></p>
-    <br>
+
+    <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/viewPeople|}" th:text="'Show Users'"></a></p>
 
     <a th:href="@{/newbuy}">Buy Products</a>
 
-    <br>
+
     <a th:href="@{/buylistings}">List Bought Products</a>
 </div>
 

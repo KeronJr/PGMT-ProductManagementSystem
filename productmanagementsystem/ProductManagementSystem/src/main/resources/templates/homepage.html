@@ -119,7 +119,7 @@
   <p>Logged as: <span sec:authentication="name"></span></p>
   <p>Has role: <span sec:authentication="authorities"></span></p>
   <p sec:authorize="hasAuthority('USER')"><a th:href="@{|/dashboard|}" th:text="'User Dashboard'"></a></p>
-  <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/admin/dashboard|}" th:text="'Admin Dashboard'"></a></p>
+  <p sec:authorize="hasAuthority('ADMIN')"><a th:href="@{|/admin/home|}" th:text="'Admin Dashboard'"></a></p>
   <a th:href="@{/logout}">Log out</a>
 </div>
 

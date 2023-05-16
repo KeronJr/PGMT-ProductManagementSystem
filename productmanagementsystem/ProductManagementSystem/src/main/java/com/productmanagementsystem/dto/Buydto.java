@@ -23,13 +23,14 @@ import java.time.LocalDateTime;
 public class Buydto {
 
     private int buy_id;
-//    @NotNull(message = "product is required")
+    @NotNull(message = "product is required")
     private Product product;
 
 //    private Product buy_product_price;
-//    @NotNull(message = "quantity is required")
+    @NotNull(message = "quantity is required")
     private int quantity;
-//    @NotNull(message = "total_price is required")
+    @NotNull(message = "total_price is required")
     private int total_price;
     private LocalDateTime createdAt;
+//    private int price;
 }

@@ -62,7 +62,8 @@
     flex-direction: column;
     /*background-image: light-gradient(#FFCCCC,#6699FF);*/
     background-image: linear-gradient(#FFCCCC,#6699FF);
-    max-height: 700px;
+    /*max-height: 1000px;*/
+    height: 100%;
     /*margin: 10px;*/
     overflow: hidden;
     border-radius: 12px;
@@ -86,6 +87,7 @@
     padding: 20px;
     /*border: 1px solid #ccc;*/
     border-radius: 4px;
+    height: 100%;
 }
 
 /*checkbox to switch from sign up to login*/
@@ -96,12 +98,12 @@
 /*Login*/
 .login {
     position: relative;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .login label {
-    margin: 25% 0 5%;
+    /*margin: 25% 0 5%;*/
 }
 
 label {
@@ -115,8 +117,8 @@ label {
 }
 
 .input {
-    width: 50%;
-    height: 20px;
+    width: 60%;
+    height: 70%;
     /*background: #e0dede;*/
     background-image: linear-gradient(#666699, #FFFFFF);
     padding: 20px;
@@ -134,7 +136,7 @@ label {
 }
 
 .register label {
-    color: #573b8a;
+    color: white;
     transform: scale(.6);
 }
 
@@ -169,8 +171,159 @@ label {
 .form button:hover {
     background-color: #6d44b8;
 }
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+
+body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1170px;
+    width: 100%;
+    margin:auto;
+}
+
+.home{
+    height: 100vh;
+    /*background-image: linear-gradient(#666699, #FFFFFF);*/
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding:50px 15px;
+    position: relative;
+}
+.home::before{
+    content: '';
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#666699, #FFFFFF);
+    z-index: 1;
+}
+
+.home .home-text{
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.home .home-text h1{
+    color:#ffffff;
+    font-size: 50px;
+    color:#ffffff;
+    /*width: 40%;*/
+    line-height: 56px;
+    font-weight: 700;
+    margin:0 0 20px;
+}
+.home .home-text p{
+    margin:0;
+    overflow: hidden;
+}
+.home .home-text p span{
+    font-size: 40px;
+    color:#666699;
+    font-weight: 700;
+    display: inline-block;
+    /*width: 1%;*/
+    line-height: 46px;
+    display: none;
+}
+
+.home .home-text p span.text-in{
+    display: block;
+    animation: textIn .5s ease;
+}
+.home .home-text p span.text-out{
+    animation: textOut .5s ease;
+}
+@keyframes textIn{
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+@keyframes textOut{
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(-100%);
+
+    }
+}
+
+
+.div1 {
+    display: block;
+    width: 50%;
+    float: left;
+
+}
+
+.div2 {
+    display: block;
+    width: 50%;
+    float: right;
+    padding-top: 2%;
+}
+.o{
+    /*background-image: linear-gradient(#666699, #FFFFFF);*/
+    /*fill-opacity: 1%;*/
+    /*background-color: red;*/
+    height: 100%;
+}
+
+.bdy{
+    background-image: linear-gradient(#666699, #FFFFFF);
+}
 </style>
-<body>
+<body class="bdy">
+<!--<h6 class="h69"></h6>-->
+<!--<p>WELCOME TO Prodify</p>-->
+
+<div class="div1">
+<section class="home">
+    <div class="container">
+        <div class="row">
+            <div class="home-text">
+                <h1>WELCOME TO P-M-G-T</h1>
+                <p class="animate-text">
+                    <span>This is Keron's Supermarket System</span>
+                    <span>This is an advanced and efficient supermarket management system designed to streamline and enhance the shopping experience for customers and optimize operations for supermarket owners</span>
+                    <span>It does help to track Inventory</span>
+                    <span>This system is specifically made for small scale retail supermarkets </span>
+                    <span>For more Information, Contact the help desk at 9991</span>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<div class="div2">
+    <div class="o">
 <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
     <div th:if="${param.error}" style="color: red"><p>Email or Password is invalid.</p></div> <br />
@@ -181,15 +334,48 @@ label {
     <!--    <h3 th:text="Login"></h3>-->
     <label for="chk" aria-hidden="true" style="color:darkslateblue">Log in</label>
     <input type="text" name="email" class="input" th:placeholder="Email" /> <br /><br />
-    <input type="password" th:placeholder="Password" class="input"  name="password" /> <br /><br />
-    <button type="Submit" th:text="Login"></button> | <a th:href="@{|/register|}" th:text="'Register'"></a><br />
+    <input type="password" th:placeholder="Password" class="input"  name="password" />
+    <button type="Submit" th:text="Login"></button>  <button><a th:href="@{|/register|}" th:text="'Register'" style="color: white; width: 30%"></a></button>
 
 </form>
 
 </div>
 </div>
 
+</div>
+</div>
+<script>
+    const txts=document.querySelector(".animate-text").children,
+        txtsLen=txts.length;
+    let index=0;
+    const textInTimer=3000,
+        textOutTimer=2800;
 
+    function animateText() {
+        for(let i=0; i<txtsLen; i++){
+            txts[i].classList.remove("text-in","text-out");
+        }
+        txts[index].classList.add("text-in");
+
+        setTimeout(function(){
+            txts[index].classList.add("text-out");
+        },textOutTimer)
+
+        setTimeout(function(){
+
+            if(index == txtsLen-1){
+                index=0;
+            }
+            else{
+                index++;
+            }
+            animateText();
+        },textInTimer);
+    }
+
+    window.onload=animateText;
+
+</script>
 
 </body>
 </html>

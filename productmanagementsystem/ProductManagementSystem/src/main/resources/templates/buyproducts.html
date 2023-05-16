@@ -92,62 +92,67 @@
 <div class="container">
     <div class="form">
         <h1>BUY PRODUCTS</h1>
-        <form th:action="@{/newbuys}" th:object="${buydto}" method="Post">
+        <form th:action="@{/newbuys}" th:object="${buyout}" method="POST">
             <label for="product_name">Product Name:</label>
-            <select id="product_name" name="product_name" th:field="*{product}">
-                <option th:each="product : ${productz}" th:value="${product.getProduct_id()}"
-                        th:text="${product.product_name}"></option>
+            <select id="product_name" name="product_name" th:field="*{product}" onchange="updatePriceAndTotal()">
+                <option th:each="product, iterStat : ${products}" th:value="${product.getProduct_id()}"
+                        th:text="${product.product_name}" th:selected="${iterStat.index == 0}"></option>
             </select>
 
-            <label for="product_price">Product price:</label>
-            <select id="product_price" name="product_price" >
-                <option th:each="product : ${productz}" th:value="${product.getProduct_id()}"
-                        th:text="${product.product_price}"></option>
+            <label for="product_price">Product Price:</label>
+            <select id="product_price" name="product_price" onchange="updateTotalPrice()">
+                <option th:each="product, iterStat : ${products}" th:value="${product.getProduct_id()}"
+                        th:text="${product.product_price}" th:selected="${iterStat.index == 0}"></option>
             </select>
             <br>
 
             <div>
                 <label for="quantity">Product Quantity:</label>
-                <input type="text" id="quantity" th:field="*{quantity}" name="quantity">
+                <input type="number" id="quantity" name="quantity" oninput="updateTotalPrice()" min="1" step="1" th:field="*{quantity}">
 
                 <div>
                     <label for="total_price">Total Price:</label>
-                    <input type="number" id="total_price" th:field="*{total_price}" readonly>
+                    <input type="number" id="total_price" name="total_price" th:field="*{total_price}" readonly>
                 </div>
-
 
                 <button type="submit">Save</button>
             </div>
         </form>
-
     </div>
 </div>
 
 <script>
     const productSelect = document.getElementById("product_name");
     const priceSelect = document.getElementById("product_price");
+    const quantityInput = document.getElementById("quantity");
+    const totalPriceInput = document.getElementById("total_price");
 
-    productSelect.addEventListener("change", updatePriceOptions);
+    // Update the product price and total on page load
+    updateTotalPrice();
 
-    function updatePriceOptions() {
-        const selectedProductId = productSelect.value;
+    function updateTotalPrice() {
+        const selectedProductIndex = productSelect.selectedIndex;
+        const selectedProductPrice = priceSelect.options[selectedProductIndex].text;
+        const quantity = parseInt(quantityInput.value);
 
-        // Clear existing options
-        priceSelect.innerHTML = "";
+        if (isNaN(quantity)) {
+            totalPriceInput.value = "";
+            return;
+        }
 
-        // Find the selected product in the productz array
-        const selectedProduct = productz.find(product => product.getProduct_id() === selectedProductId);
+        const price = parseFloat(selectedProductPrice);
+        const totalPrice = quantity * price;
 
-        // Add the price options for the selected product
-        selectedProduct.getPrices().forEach(price => {
-            const option = document.createElement("option");
-            option.value = price.getPrice_id();
-            option.text = price.getProduct_price();
-            priceSelect.appendChild(option);
-        });
+        totalPriceInput.value = totalPrice.toFixed(2); // Set the total price with 2 decimal places
+    }
+
+    function updatePriceAndTotal() {
+        const selectedProductIndex = productSelect.selectedIndex;
+        priceSelect.selectedIndex = selectedProductIndex;
+
+        updateTotalPrice();
     }
 </script>
 
 </body>
 </html>
-

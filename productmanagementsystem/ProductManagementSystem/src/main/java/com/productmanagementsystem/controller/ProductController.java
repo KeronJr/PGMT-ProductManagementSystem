@@ -218,14 +218,6 @@ public String registerProductInDb(@ModelAttribute("Product") Product theProduct)
 
 
 
-
-
-
-
-
-
-
-
     @GetMapping(value = "/openpdf/products", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> ProductReport()  throws IOException {
         List<Product> products = (List<Product>) repository.findAll();

@@ -10,4 +10,6 @@ public class UserController {
     public String homePage(){
         return "admin/home";
     }
+
+
 }

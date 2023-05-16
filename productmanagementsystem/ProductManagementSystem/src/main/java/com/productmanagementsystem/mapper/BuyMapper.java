@@ -16,7 +16,8 @@ public class BuyMapper {
         buyproducts.setProduct(buydto.getProduct());
 //        buyproducts.setBuy_product_price(buydto.getBuy_product_price());
         buyproducts.setQuantity(buydto.getQuantity());
-        buyproducts.setCreatedAt(buydto.getCreatedAt());
+//        buyproducts.setCreatedAt(buydto.getCreatedAt());
+//        buyproducts.setPrice(buydto.getPrice());
       return buyproducts;
     }
 
@@ -28,6 +29,7 @@ public class BuyMapper {
         buydto.setQuantity(buyproducts.getQuantity());
         buydto.setTotal_price(buyproducts.getTotal_price());
         buydto.setCreatedAt(buyproducts.getCreatedAt());
+//        buydto.setPrice(buyproducts.getPrice());
         return buydto;
     }
 

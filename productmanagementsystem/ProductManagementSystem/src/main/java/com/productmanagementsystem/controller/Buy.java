@@ -84,14 +84,14 @@ public class Buy {
     @GetMapping("/newbuy")
     public String createbuyForm(Model model){
         Buydto buydto = new Buydto();
-        model.addAttribute("buydto", buydto);
-        model.addAttribute("productz",productService.getAllmodels());
+        model.addAttribute("buyout", buydto);
+        model.addAttribute("products",productService.getAllmodels());
 //        buyService.savebuyproducts(buydto);
         return "buyproducts";
     }
 
     @PostMapping("/newbuys")
-    public String saveProductsbought(@ModelAttribute("buydto") @Valid Buydto buydto, BindingResult result, Model model) {
+    public String saveProductsbought(@ModelAttribute("buyout") @Valid Buydto buydto, BindingResult result, Model model) {
         if (result.hasErrors()){
             return "buyproducts";
         }

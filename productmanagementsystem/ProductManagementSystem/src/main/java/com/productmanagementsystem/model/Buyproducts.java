@@ -41,6 +41,7 @@ public class Buyproducts {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+//     private int price;
 
 
     public void setProduct(Product product) {
