@@ -1,6 +1,6 @@
 # PGMT-ProductManagementSystem
 
-Technical Documentation
+                                                       `Technical Documentation`
 
 Product  Management System (PM -GT) is a web-based application that enables local supermarkets  to manage their operations and improve their services. The system will enable Supermarket owners to maintain their sales .
 
