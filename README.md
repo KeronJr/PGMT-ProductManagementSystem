@@ -119,5 +119,5 @@ Note that it will be  "PDF" Format
 Logout
 To log out of the application, click on the "Logout" icon in the top navigation bar.
 
-If you have any questions or issues while using the application, please contact at keronjunior234@gmail.com.
+If you have any questions or issues while using the application, please contact at umutesihuguette150@gmail.com.
 
